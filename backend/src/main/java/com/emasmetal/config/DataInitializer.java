@@ -2,27 +2,56 @@ package com.emasmetal.config;
 
 import com.emasmetal.entity.GalleryItem;
 import com.emasmetal.entity.Reference;
+import com.emasmetal.entity.Role;
+import com.emasmetal.entity.User;
 import com.emasmetal.repository.GalleryItemRepository;
 import com.emasmetal.repository.ReferenceRepository;
+import com.emasmetal.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @RequiredArgsConstructor
 @Slf4j
 public class DataInitializer {
-    
+
+    @Value("${admin.username:admin}")
+    private String adminUsername;
+
+    @Value("${admin.password:admin123}")
+    private String adminPassword;
+
+    @Value("${admin.email:admin@emasmetal.com}")
+    private String adminEmail;
+
     @Bean
     @Profile("dev")
     public CommandLineRunner initData(
             ReferenceRepository referenceRepository,
-            GalleryItemRepository galleryItemRepository) {
-        
+            GalleryItemRepository galleryItemRepository,
+            UserRepository userRepository,
+            PasswordEncoder passwordEncoder) {
+
         return args -> {
+            // Initialize admin user
+            if (!userRepository.existsByUsername(adminUsername)) {
+                log.info("Creating admin user...");
+                User admin = User.builder()
+                        .username(adminUsername)
+                        .email(adminEmail)
+                        .password(passwordEncoder.encode(adminPassword))
+                        .role(Role.ADMIN)
+                        .enabled(true)
+                        .build();
+                userRepository.save(admin);
+                log.info("Admin user created with username: {}", adminUsername);
+            }
             if (referenceRepository.count() == 0) {
                 log.info("Initializing sample references...");
                 

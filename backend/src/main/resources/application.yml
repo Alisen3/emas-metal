@@ -1,13 +1,13 @@
 spring:
   application:
     name: emas-metal-api
-  
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/emasmetal
-    username: ${DB_USERNAME:emasmetal}
-    password: ${DB_PASSWORD:emasmetal}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:emasdb}
+    username: ${DB_USERNAME:emas}
+    password: ${DB_PASSWORD:emas_pass}
     driver-class-name: org.postgresql.Driver
-  
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -16,15 +16,23 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-  
+
   servlet:
     multipart:
       enabled: true
       max-file-size: 20MB
       max-request-size: 25MB
 
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
 server:
   port: 8080
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:dGhpcyBpcyBhIHZlcnkgc2VjdXJlIGp3dCBzZWNyZXQga2V5IGZvciBlbWFzIG1ldGFsIGFwcGxpY2F0aW9uIHVzZSBhIHN0cm9uZ2VyIG9uZSBpbiBwcm9kdWN0aW9u}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}
 
 # File Storage Configuration
 file:
@@ -36,6 +44,7 @@ file:
 admin:
   username: ${ADMIN_USERNAME:admin}
   password: ${ADMIN_PASSWORD:admin123}
+  email: ${ADMIN_EMAIL:admin@emasmetal.com}
 
 # OpenAPI Configuration
 springdoc:

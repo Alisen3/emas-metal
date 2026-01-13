@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "references")
+@Table(name = "company_references")
 @Data
 @Builder
 @NoArgsConstructor
