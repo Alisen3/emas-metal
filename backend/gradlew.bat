@@ -13,8 +13,11 @@
 @rem See the License for the specific language governing permissions and
 @rem limitations under the License.
 @rem
+<<<<<<< HEAD
 @rem SPDX-License-Identifier: Apache-2.0
 @rem
+=======
+>>>>>>> 288d730538ec7cba7f20856fe03a1019f6b54f95
 
 @if "%DEBUG%"=="" @echo off
 @rem ##########################################################################
@@ -70,10 +73,18 @@ goto fail
 :execute
 @rem Setup the command line
 
+<<<<<<< HEAD
 
 
 @rem Execute Gradle
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -jar "%APP_HOME%\gradle\wrapper\gradle-wrapper.jar" %*
+=======
+set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
+
+
+@rem Execute Gradle
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %*
+>>>>>>> 288d730538ec7cba7f20856fe03a1019f6b54f95
 
 :end
 @rem End local scope for the variables with windows NT shell

@@ -3,7 +3,11 @@ spring:
     name: emas-metal-api
 
   datasource:
+<<<<<<< HEAD
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:emasdb}
+=======
+    url: jdbc:postgresql://localhost:5432/emasdb
+>>>>>>> 288d730538ec7cba7f20856fe03a1019f6b54f95
     username: ${DB_USERNAME:emas}
     password: ${DB_PASSWORD:emas_pass}
     driver-class-name: org.postgresql.Driver
@@ -11,7 +15,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: false
+    show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -31,16 +35,24 @@ server:
 
 # JWT Configuration
 jwt:
+<<<<<<< HEAD
   secret: ${JWT_SECRET:dGhpcyBpcyBhIHZlcnkgc2VjdXJlIGp3dCBzZWNyZXQga2V5IGZvciBlbWFzIG1ldGFsIGFwcGxpY2F0aW9uIHVzZSBhIHN0cm9uZ2VyIG9uZSBpbiBwcm9kdWN0aW9u}
   expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+=======
+  secret: ${JWT_SECRET:emas-metal-secret-key-for-jwt-signing-must-be-at-least-256-bits-long-for-security}
+  access-token-expiration: ${JWT_ACCESS_EXPIRATION:900000}
+  refresh-token-expiration: ${JWT_REFRESH_EXPIRATION:604800000}
+>>>>>>> 288d730538ec7cba7f20856fe03a1019f6b54f95
 
 # File Storage Configuration
 file:
   upload-dir: ${UPLOAD_DIR:./uploads}
-  allowed-extensions: pdf,dwg,dxf,step,stp,png,jpg,jpeg
-  max-size-mb: 20
+  allowed-contact-extensions: pdf,dwg,dxf,step,stp,png,jpg,jpeg
+  allowed-gallery-extensions: jpg,jpeg,png,webp
+  max-contact-size: 20971520
+  max-gallery-size: 10485760
 
-# Admin Credentials (use env variables in production)
+# Admin Credentials (for initial seeding)
 admin:
   username: ${ADMIN_USERNAME:admin}
   password: ${ADMIN_PASSWORD:admin123}
@@ -52,11 +64,14 @@ springdoc:
     path: /api-docs
   swagger-ui:
     path: /swagger-ui.html
-    operationsSorter: method
+    operations-sorter: method
 
 # CORS Configuration
 cors:
   allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000}
+  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+  allowed-headers: "*"
+  allow-credentials: true
 
 logging:
   level:
