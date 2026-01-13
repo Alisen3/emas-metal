@@ -37,6 +37,8 @@ jwt:
 # File Storage Configuration
 file:
   upload-dir: ${UPLOAD_DIR:./uploads}
+  allowed-extensions: pdf,dwg,dxf,step,stp,png,jpg,jpeg,webp
+  max-size-mb: 20
   allowed-contact-extensions: pdf,dwg,dxf,step,stp,png,jpg,jpeg
   allowed-gallery-extensions: jpg,jpeg,png,webp
   max-contact-size: 20971520
