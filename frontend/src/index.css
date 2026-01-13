@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-body text-gray-800 antialiased;
+    background-color: #FFFFFF;
+    margin: 0;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 
+           bg-emas-cta-blue text-white font-medium rounded-lg
+           transition-all duration-200 ease-out
+           hover:bg-emas-deep-blue hover:shadow-lg hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-emas-soft-blue focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 
+           bg-transparent text-emas-deep-blue font-medium rounded-lg
+           border-2 border-emas-deep-blue
+           transition-all duration-200 ease-out
+           hover:bg-emas-deep-blue hover:text-white hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-emas-soft-blue focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-text {
+    @apply inline-flex items-center text-emas-soft-blue font-medium
+           transition-colors duration-200
+           hover:text-emas-deep-blue
+           focus:outline-none focus:underline;
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100
+           transition-all duration-300
+           hover:shadow-md hover:border-gray-200;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-200
+           bg-white text-gray-800
+           placeholder:text-gray-400
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-emas-soft-blue focus:border-transparent
+           disabled:bg-gray-100 disabled:cursor-not-allowed;
+  }
+  
+  .input-label {
+    @apply block text-sm font-medium text-gray-700 mb-1.5;
+  }
+  
+  .input-error {
+    @apply text-sm text-red-500 mt-1;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .badge-blue {
+    @apply badge bg-emas-light-bg text-emas-deep-blue;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-heading font-bold text-emas-deep-blue;
+  }
+  
+  .section-subtitle {
+    @apply text-lg text-emas-gray mt-4 max-w-2xl;
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-emas-deep-blue to-emas-soft-blue bg-clip-text text-transparent;
+  }
+  
+  .bg-industrial-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(30, 111, 217, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(30, 111, 217, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F2F7FD;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E6FD9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0B3C78;
+}
