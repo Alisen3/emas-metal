@@ -1,15 +1,4 @@
-import React from 'react';
-import type { LucideIcon } from 'lucide-react';
-
-interface ServiceCardProps {
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  features?: string[];
-  className?: string;
-}
-
-export const ServiceCard: React.FC<ServiceCardProps> = ({
+export const ServiceCard = ({
   title,
   description,
   icon: Icon,
@@ -30,15 +19,15 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       <div className="w-14 h-14 rounded-xl bg-emas-light-bg flex items-center justify-center mb-5 group-hover:bg-emas-soft-blue/10 transition-colors">
         <Icon className="w-7 h-7 text-emas-soft-blue" />
       </div>
-      
+
       <h3 className="text-xl font-heading font-semibold text-emas-deep-blue mb-3">
         {title}
       </h3>
-      
+
       <p className="text-gray-600 leading-relaxed mb-4">
         {description}
       </p>
-      
+
       {features && features.length > 0 && (
         <ul className="space-y-2">
           {features.map((feature, index) => (

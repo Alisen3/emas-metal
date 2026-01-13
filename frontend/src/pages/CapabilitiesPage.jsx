@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { SectionHeader } from '../components/ui';
@@ -40,7 +39,7 @@ const finishes = [
   { name: 'Black Oxide', description: 'Mild corrosion resistance, low reflection' },
 ];
 
-export const CapabilitiesPage: React.FC = () => {
+export const CapabilitiesPage = () => {
   return (
     <div>
       {/* Hero */}
@@ -52,7 +51,7 @@ export const CapabilitiesPage: React.FC = () => {
               Manufacturing Capabilities
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
-              State-of-the-art equipment and expertise to handle your most demanding 
+              State-of-the-art equipment and expertise to handle your most demanding
               precision machining requirements.
             </p>
           </div>

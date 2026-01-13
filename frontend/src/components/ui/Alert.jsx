@@ -1,13 +1,4 @@
-import React from 'react';
 import { CheckCircle, AlertCircle, Info, XCircle, X } from 'lucide-react';
-
-interface AlertProps {
-  type: 'success' | 'error' | 'warning' | 'info';
-  title?: string;
-  message: string;
-  onClose?: () => void;
-  className?: string;
-}
 
 const alertConfig = {
   success: {
@@ -44,7 +35,7 @@ const alertConfig = {
   },
 };
 
-export const Alert: React.FC<AlertProps> = ({
+export const Alert = ({
   type,
   title,
   message,

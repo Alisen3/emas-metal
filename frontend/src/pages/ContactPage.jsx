@@ -1,21 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
 import { Input, Textarea, FileUpload, PrimaryButton, Alert } from '../components/ui';
-import { contactApi, type CreateContactRequest, type ApiError } from '../api';
-
-interface FormData {
-  name: string;
-  company: string;
-  email: string;
-  phone: string;
-  message: string;
-}
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-  message?: string;
-}
+import { contactApi } from '../api';
 
 const contactInfo = [
   { icon: MapPin, label: 'Address', value: 'Industrial Zone A, Block 7\n34956 Istanbul, Turkey' },
@@ -24,21 +10,21 @@ const contactInfo = [
   { icon: Clock, label: 'Hours', value: 'Mon-Fri: 08:00-18:00\nSat: 08:00-13:00' },
 ];
 
-export const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
+export const ContactPage = () => {
+  const [formData, setFormData] = useState({
     name: '',
     company: '',
     email: '',
     phone: '',
     message: '',
   });
-  const [attachment, setAttachment] = useState<File | null>(null);
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [attachment, setAttachment] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [submitStatus, setSubmitStatus] = useState('idle');
   const [submitMessage, setSubmitMessage] = useState('');
 
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
+  const validateForm = () => {
+    const newErrors = {};
 
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
@@ -60,16 +46,16 @@ export const ContactPage: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
-    if (errors[name as keyof FormErrors]) {
+    if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) return;
@@ -77,7 +63,7 @@ export const ContactPage: React.FC = () => {
     setSubmitStatus('loading');
 
     try {
-      const request: CreateContactRequest = {
+      const request = {
         name: formData.name.trim(),
         company: formData.company.trim() || undefined,
         email: formData.email.trim(),
@@ -89,14 +75,13 @@ export const ContactPage: React.FC = () => {
 
       setSubmitStatus('success');
       setSubmitMessage(response.message || 'Thank you for your message. We will get back to you within 24 hours.');
-      
+
       // Reset form
       setFormData({ name: '', company: '', email: '', phone: '', message: '' });
       setAttachment(null);
     } catch (err) {
-      const apiError = err as ApiError;
       setSubmitStatus('error');
-      setSubmitMessage(apiError.message || 'Failed to send message. Please try again.');
+      setSubmitMessage(err.message || 'Failed to send message. Please try again.');
     }
   };
 
@@ -111,7 +96,7 @@ export const ContactPage: React.FC = () => {
               Get in Touch
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Ready to start your project? Have questions about our capabilities? 
+              Ready to start your project? Have questions about our capabilities?
               We're here to help. Send us your drawings for a detailed quote.
             </p>
           </div>
@@ -171,7 +156,7 @@ export const ContactPage: React.FC = () => {
                   Request a Quote
                 </h2>
                 <p className="text-gray-600 mb-8">
-                  Fill out the form below and attach your technical drawings. 
+                  Fill out the form below and attach your technical drawings.
                   We'll respond within 48 hours.
                 </p>
 
@@ -281,8 +266,8 @@ export const ContactPage: React.FC = () => {
             Our Response Guarantee
           </h2>
           <p className="text-white/80">
-            We understand that time is critical. That's why we commit to responding 
-            to all quote requests within 48 business hours, with detailed pricing 
+            We understand that time is critical. That's why we commit to responding
+            to all quote requests within 48 business hours, with detailed pricing
             and lead time information.
           </p>
         </div>

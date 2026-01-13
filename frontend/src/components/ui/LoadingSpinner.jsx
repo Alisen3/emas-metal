@@ -1,13 +1,6 @@
-import React from 'react';
 import { Loader2 } from 'lucide-react';
 
-interface LoadingSpinnerProps {
-  size?: 'sm' | 'md' | 'lg';
-  className?: string;
-  text?: string;
-}
-
-export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
+export const LoadingSpinner = ({
   size = 'md',
   className = '',
   text,
@@ -26,11 +19,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   );
 };
 
-interface LoadingOverlayProps {
-  text?: string;
-}
-
-export const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ text = 'Loading...' }) => {
+export const LoadingOverlay = ({ text = 'Loading...' }) => {
   return (
     <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-50 flex items-center justify-center">
       <LoadingSpinner size="lg" text={text} />

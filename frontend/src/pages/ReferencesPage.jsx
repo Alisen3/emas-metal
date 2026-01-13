@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ExternalLink, Building2, ArrowRight } from 'lucide-react';
 import { SectionHeader, LoadingSpinner, Alert } from '../components/ui';
-import { referencesApi, getImageUrl, type Reference } from '../api';
+import { referencesApi, getImageUrl } from '../api';
 
 // Fallback data for when API is unavailable
-const fallbackReferences: Reference[] = [
+const fallbackReferences = [
   { id: '1', name: 'Siemens Energy', industry: 'Energy & Power', description: 'Precision turbine components', websiteUrl: 'https://siemens-energy.com', createdAt: '' },
   { id: '2', name: 'Bosch Rexroth', industry: 'Industrial Automation', description: 'Hydraulic system components', websiteUrl: 'https://boschrexroth.com', createdAt: '' },
   { id: '3', name: 'MAN Truck & Bus', industry: 'Automotive', description: 'Heavy-duty engine components', websiteUrl: 'https://man.eu', createdAt: '' },
@@ -25,10 +25,10 @@ const industries = [
   { name: 'Robotics & Automation', count: 20 },
 ];
 
-export const ReferencesPage: React.FC = () => {
-  const [references, setReferences] = useState<Reference[]>([]);
+export const ReferencesPage = () => {
+  const [references, setReferences] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchReferences = async () => {
@@ -60,7 +60,7 @@ export const ReferencesPage: React.FC = () => {
               Trusted by Industry Leaders
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
-              For over 15 years, we've been the precision manufacturing partner of choice 
+              For over 15 years, we've been the precision manufacturing partner of choice
               for leading companies across Europe and beyond.
             </p>
           </div>
@@ -153,19 +153,19 @@ export const ReferencesPage: React.FC = () => {
                       </div>
                     </div>
                   )}
-                  
+
                   <h3 className="font-heading font-semibold text-emas-deep-blue text-center mb-2">
                     {ref.name}
                   </h3>
-                  
+
                   {ref.industry && (
                     <p className="text-xs text-gray-500 text-center mb-2">{ref.industry}</p>
                   )}
-                  
+
                   {ref.description && (
                     <p className="text-sm text-gray-600 text-center mb-3">{ref.description}</p>
                   )}
-                  
+
                   {ref.websiteUrl && (
                     <div className="text-center">
                       <a
@@ -191,7 +191,7 @@ export const ReferencesPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="text-6xl text-emas-soft-blue/20 mb-6">"</div>
           <blockquote className="text-2xl text-gray-700 italic leading-relaxed mb-8">
-            EMAS Metal has been our go-to partner for precision components for over 5 years. 
+            EMAS Metal has been our go-to partner for precision components for over 5 years.
             Their quality is consistently excellent, and their team truly understands our requirements.
           </blockquote>
           <div>

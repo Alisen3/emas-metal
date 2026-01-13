@@ -1,19 +1,10 @@
-import React, { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { Upload, X, FileText, AlertCircle } from 'lucide-react';
-
-interface FileUploadProps {
-  label?: string;
-  accept?: string;
-  maxSize?: number; // in MB
-  onFileSelect: (file: File | null) => void;
-  error?: string;
-  helperText?: string;
-}
 
 const ALLOWED_EXTENSIONS = ['pdf', 'dwg', 'dxf', 'step', 'stp', 'png', 'jpg', 'jpeg'];
 const DEFAULT_MAX_SIZE = 20; // MB
 
-export const FileUpload: React.FC<FileUploadProps> = ({
+export const FileUpload = ({
   label = 'Attach File',
   accept = '.pdf,.dwg,.dxf,.step,.stp,.png,.jpg,.jpeg',
   maxSize = DEFAULT_MAX_SIZE,
@@ -21,12 +12,12 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   error,
   helperText,
 }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const inputRef = useRef(null);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [dragActive, setDragActive] = useState(false);
-  const [localError, setLocalError] = useState<string>('');
+  const [localError, setLocalError] = useState('');
 
-  const validateFile = useCallback((file: File): string | null => {
+  const validateFile = useCallback((file) => {
     // Check file extension
     const extension = file.name.split('.').pop()?.toLowerCase();
     if (!extension || !ALLOWED_EXTENSIONS.includes(extension)) {
@@ -42,7 +33,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
     return null;
   }, [maxSize]);
 
-  const handleFile = useCallback((file: File | null) => {
+  const handleFile = useCallback((file) => {
     if (file) {
       const validationError = validateFile(file);
       if (validationError) {
@@ -57,7 +48,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
     onFileSelect(file);
   }, [validateFile, onFileSelect]);
 
-  const handleDrag = useCallback((e: React.DragEvent) => {
+  const handleDrag = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
     if (e.type === 'dragenter' || e.type === 'dragover') {
@@ -67,17 +58,17 @@ export const FileUpload: React.FC<FileUploadProps> = ({
     }
   }, []);
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
+  const handleDrop = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
-    
+
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       handleFile(e.dataTransfer.files[0]);
     }
   }, [handleFile]);
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e) => {
     if (e.target.files && e.target.files[0]) {
       handleFile(e.target.files[0]);
     }
@@ -101,7 +92,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
           {label}
         </label>
       )}
-      
+
       <div
         className={`
           relative border-2 border-dashed rounded-lg p-6
@@ -123,7 +114,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
           aria-label="File upload"
         />
-        
+
         {selectedFile ? (
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -163,14 +154,14 @@ export const FileUpload: React.FC<FileUploadProps> = ({
           </div>
         )}
       </div>
-      
+
       {displayError && (
         <div className="flex items-center gap-1.5 mt-2 text-red-500">
           <AlertCircle className="w-4 h-4" />
           <p className="text-sm">{displayError}</p>
         </div>
       )}
-      
+
       {helperText && !displayError && (
         <p className="text-sm text-gray-500 mt-1">{helperText}</p>
       )}
