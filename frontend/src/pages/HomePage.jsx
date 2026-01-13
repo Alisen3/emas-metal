@@ -1,10 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  Cog, 
-  Target, 
-  Zap, 
+import {
+  ArrowRight,
+  Cog,
+  Target,
+  Zap,
   Users,
   CheckCircle,
   Gauge
@@ -67,7 +66,7 @@ const whyChooseUs = [
   },
 ];
 
-export const HomePage: React.FC = () => {
+export const HomePage = () => {
   return (
     <div>
       {/* Hero Section */}
@@ -80,7 +79,7 @@ export const HomePage: React.FC = () => {
             title="Precision Manufacturing Services"
             subtitle="From prototypes to production runs, we deliver quality machined components with consistency and precision."
           />
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {services.map((service) => (
               <ServiceCard
@@ -89,7 +88,7 @@ export const HomePage: React.FC = () => {
               />
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
             <Link to="/services">
               <PrimaryButton rightIcon={<ArrowRight className="w-5 h-5" />}>
@@ -110,7 +109,7 @@ export const HomePage: React.FC = () => {
                 subtitle="We combine decades of machining expertise with modern technology to deliver exceptional results."
                 align="left"
               />
-              
+
               <div className="grid sm:grid-cols-2 gap-6 mt-10">
                 {whyChooseUs.map((item) => (
                   <div key={item.title} className="flex gap-4">
@@ -124,7 +123,7 @@ export const HomePage: React.FC = () => {
                   </div>
                 ))}
               </div>
-              
+
               <div className="mt-10">
                 <Link to="/about">
                   <SecondaryButton rightIcon={<ArrowRight className="w-5 h-5" />}>
@@ -133,7 +132,7 @@ export const HomePage: React.FC = () => {
                 </Link>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="aspect-[4/3] bg-gradient-to-br from-emas-soft-blue to-emas-deep-blue rounded-2xl overflow-hidden">
                 <div className="absolute inset-0 bg-industrial-pattern opacity-20" />
@@ -168,7 +167,7 @@ export const HomePage: React.FC = () => {
             title="Industries We Serve"
             subtitle="Trusted by leading companies across diverse sectors for mission-critical components."
           />
-          
+
           <div className="flex flex-wrap justify-center gap-4 mt-12">
             {industries.map((industry) => (
               <div
@@ -179,7 +178,7 @@ export const HomePage: React.FC = () => {
               </div>
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
             <Link to="/references">
               <SecondaryButton rightIcon={<ArrowRight className="w-5 h-5" />}>
@@ -197,7 +196,7 @@ export const HomePage: React.FC = () => {
             Ready to Start Your Project?
           </h2>
           <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-            Send us your drawings and specifications. Our engineering team will 
+            Send us your drawings and specifications. Our engineering team will
             provide a detailed quote within 48 hours.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

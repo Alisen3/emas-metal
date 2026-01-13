@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { PrimaryButton } from '../ui';
@@ -13,7 +13,7 @@ const navLinks = [
   { name: 'Contact', path: '/contact' },
 ];
 
-export const Navbar: React.FC = () => {
+export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -36,8 +36,8 @@ export const Navbar: React.FC = () => {
       className={`
         fixed top-0 left-0 right-0 z-50
         transition-all duration-300
-        ${isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-sm' 
+        ${isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm'
           : 'bg-white'
         }
       `}
@@ -68,8 +68,8 @@ export const Navbar: React.FC = () => {
                 className={({ isActive }) => `
                   px-4 py-2 text-sm font-medium rounded-lg
                   transition-all duration-200
-                  ${isActive 
-                    ? 'text-emas-soft-blue bg-emas-light-bg' 
+                  ${isActive
+                    ? 'text-emas-soft-blue bg-emas-light-bg'
                     : 'text-gray-600 hover:text-emas-deep-blue hover:bg-gray-50'
                   }
                 `}
@@ -116,8 +116,8 @@ export const Navbar: React.FC = () => {
                 className={({ isActive }) => `
                   px-4 py-3 text-base font-medium rounded-lg
                   transition-all duration-200
-                  ${isActive 
-                    ? 'text-emas-soft-blue bg-emas-light-bg' 
+                  ${isActive
+                    ? 'text-emas-soft-blue bg-emas-light-bg'
                     : 'text-gray-600 hover:text-emas-deep-blue hover:bg-gray-50'
                   }
                 `}

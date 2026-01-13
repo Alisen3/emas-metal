@@ -1,9 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
+import {
+  MapPin,
+  Phone,
+  Mail,
   Clock,
   Linkedin,
   ArrowUpRight
@@ -27,7 +26,7 @@ const services = [
   'Assembly Services',
 ];
 
-export const Footer: React.FC = () => {
+export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -51,7 +50,7 @@ export const Footer: React.FC = () => {
               </div>
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-6">
-              Delivering precision CNC machining solutions for industries worldwide. 
+              Delivering precision CNC machining solutions for industries worldwide.
               ISO 9001:2015 certified with over 15 years of manufacturing excellence.
             </p>
             <div className="flex gap-3">
@@ -137,7 +136,7 @@ export const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {currentYear} EMAS Metal. All rights reserved.
+              &copy; {currentYear} EMAS Metal. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link to="/privacy" className="text-gray-400 text-sm hover:text-white transition-colors">

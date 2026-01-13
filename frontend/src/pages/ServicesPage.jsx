@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Cog, Target, Zap, Wrench, Microscope, Package, ArrowRight, CheckCircle } from 'lucide-react';
 
@@ -77,7 +76,7 @@ const services = [
   },
 ];
 
-export const ServicesPage: React.FC = () => {
+export const ServicesPage = () => {
   return (
     <div>
       {/* Hero */}
@@ -89,7 +88,7 @@ export const ServicesPage: React.FC = () => {
               Precision Manufacturing Services
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
-              From prototypes to production, we deliver precision-machined components 
+              From prototypes to production, we deliver precision-machined components
               that meet the most demanding specifications across industries.
             </p>
           </div>
@@ -116,7 +115,7 @@ export const ServicesPage: React.FC = () => {
                       {service.title}
                     </h2>
                     <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
-                    
+
                     <div className="mb-6">
                       <h4 className="font-semibold text-emas-deep-blue mb-3">Capabilities:</h4>
                       <ul className="space-y-2">
@@ -128,7 +127,7 @@ export const ServicesPage: React.FC = () => {
                         ))}
                       </ul>
                     </div>
-                    
+
                     <div>
                       <h4 className="font-semibold text-emas-deep-blue mb-3">Materials:</h4>
                       <div className="flex flex-wrap gap-2">
@@ -140,7 +139,7 @@ export const ServicesPage: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className={!isEven ? 'lg:order-1' : ''}>
                     <div className="aspect-[4/3] bg-gradient-to-br from-emas-light-bg to-emas-soft-blue/10 rounded-2xl flex items-center justify-center">
                       <Icon className="w-24 h-24 text-emas-soft-blue/30" />

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Heart, Users, TrendingUp, Award } from 'lucide-react';
 import { SectionHeader, PrimaryButton } from '../components/ui';
@@ -16,7 +15,7 @@ const certifications = [
   'AS9100D Aerospace Quality',
 ];
 
-export const AboutPage: React.FC = () => {
+export const AboutPage = () => {
   return (
     <div>
       {/* Hero */}
@@ -28,7 +27,7 @@ export const AboutPage: React.FC = () => {
               Engineering Excellence Since 2009
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
-              From a small workshop to a leading precision machining facility, our journey 
+              From a small workshop to a leading precision machining facility, our journey
               has been defined by commitment to quality and customer satisfaction.
             </p>
           </div>
@@ -43,13 +42,13 @@ export const AboutPage: React.FC = () => {
               <h2 className="text-3xl font-heading font-bold text-emas-deep-blue mb-6">Our Story</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  EMAS Metal was founded in 2009 by mechanical engineers with a passion for 
-                  precision manufacturing. What began as a modest workshop has grown into a 
+                  EMAS Metal was founded in 2009 by mechanical engineers with a passion for
+                  precision manufacturing. What began as a modest workshop has grown into a
                   state-of-the-art facility serving clients across Europe.
                 </p>
                 <p>
-                  Today, we operate from a modern 2,500m² facility equipped with the latest 
-                  CNC technology. Our team of 50+ skilled professionals is dedicated to 
+                  Today, we operate from a modern 2,500m&sup2; facility equipped with the latest
+                  CNC technology. Our team of 50+ skilled professionals is dedicated to
                   exceeding customer expectations.
                 </p>
               </div>

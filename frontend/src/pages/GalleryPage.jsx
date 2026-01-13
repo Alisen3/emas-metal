@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X, ArrowRight, ZoomIn } from 'lucide-react';
 import { LoadingSpinner, Alert } from '../components/ui';
-import { galleryApi, getImageUrl, type GalleryItem } from '../api';
+import { galleryApi, getImageUrl } from '../api';
 
 const categories = ['All', 'Milling', 'Turning', 'Parts', 'Factory'];
 
 // Fallback data
-const fallbackGallery: GalleryItem[] = [
+const fallbackGallery = [
   { id: '1', title: '5-Axis CNC Milling Center', category: 'Milling', imageUrl: '', description: 'DMG MORI DMU 80 eVo', createdAt: '' },
   { id: '2', title: 'Precision Turning Operation', category: 'Turning', imageUrl: '', description: 'High-precision turning', createdAt: '' },
   { id: '3', title: 'Aerospace Component', category: 'Parts', imageUrl: '', description: 'Titanium aerospace part', createdAt: '' },
@@ -18,12 +18,12 @@ const fallbackGallery: GalleryItem[] = [
   { id: '8', title: 'Quality Lab', category: 'Factory', imageUrl: '', description: 'CMM inspection room', createdAt: '' },
 ];
 
-export const GalleryPage: React.FC = () => {
-  const [items, setItems] = useState<GalleryItem[]>([]);
+export const GalleryPage = () => {
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
+  const [lightboxItem, setLightboxItem] = useState(null);
 
   useEffect(() => {
     const fetchGallery = async () => {
@@ -48,7 +48,7 @@ export const GalleryPage: React.FC = () => {
     ? items
     : items.filter((item) => item.category === selectedCategory);
 
-  const openLightbox = (item: GalleryItem) => {
+  const openLightbox = (item) => {
     setLightboxItem(item);
     document.body.style.overflow = 'hidden';
   };
@@ -69,7 +69,7 @@ export const GalleryPage: React.FC = () => {
               Our Work Gallery
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Explore our precision-machined components, state-of-the-art equipment, 
+              Explore our precision-machined components, state-of-the-art equipment,
               and modern manufacturing facility.
             </p>
           </div>
@@ -123,7 +123,7 @@ export const GalleryPage: React.FC = () => {
                       </span>
                     </div>
                   )}
-                  
+
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -166,7 +166,7 @@ export const GalleryPage: React.FC = () => {
           >
             <X className="w-6 h-6" />
           </button>
-          
+
           <div
             className="max-w-4xl w-full"
             onClick={(e) => e.stopPropagation()}

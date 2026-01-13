@@ -1,13 +1,4 @@
-import React from 'react';
-
-interface SectionHeaderProps {
-  title: string;
-  subtitle?: string;
-  align?: 'left' | 'center';
-  className?: string;
-}
-
-export const SectionHeader: React.FC<SectionHeaderProps> = ({
+export const SectionHeader = ({
   title,
   subtitle,
   align = 'center',
