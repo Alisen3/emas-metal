@@ -3,11 +3,7 @@ spring:
     name: emas-metal-api
 
   datasource:
-<<<<<<< HEAD
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:emasdb}
-=======
-    url: jdbc:postgresql://localhost:5432/emasdb
->>>>>>> 288d730538ec7cba7f20856fe03a1019f6b54f95
     username: ${DB_USERNAME:emas}
     password: ${DB_PASSWORD:emas_pass}
     driver-class-name: org.postgresql.Driver
@@ -35,14 +31,8 @@ server:
 
 # JWT Configuration
 jwt:
-<<<<<<< HEAD
   secret: ${JWT_SECRET:dGhpcyBpcyBhIHZlcnkgc2VjdXJlIGp3dCBzZWNyZXQga2V5IGZvciBlbWFzIG1ldGFsIGFwcGxpY2F0aW9uIHVzZSBhIHN0cm9uZ2VyIG9uZSBpbiBwcm9kdWN0aW9u}
   expiration-ms: ${JWT_EXPIRATION_MS:86400000}
-=======
-  secret: ${JWT_SECRET:emas-metal-secret-key-for-jwt-signing-must-be-at-least-256-bits-long-for-security}
-  access-token-expiration: ${JWT_ACCESS_EXPIRATION:900000}
-  refresh-token-expiration: ${JWT_REFRESH_EXPIRATION:604800000}
->>>>>>> 288d730538ec7cba7f20856fe03a1019f6b54f95
 
 # File Storage Configuration
 file:
